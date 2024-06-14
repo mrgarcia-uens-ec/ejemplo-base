@@ -37,6 +37,7 @@ if 'CODESPACE_NAME' in os.environ:
 # Application definition
 
 INSTALLED_APPS = [
+    "appjesusgarcia",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -129,7 +130,8 @@ STATICFILES_DIRS = [
     BASE_DIR / "hello_world" / "static",
 ]
 
-STATIC_URL = "static/"
+#STATIC_URL = "static/"
+STATIC_URL = 'appjesusgarcia/static/'
 STATIC_ROOT = BASE_DIR / "hello_world" / "staticfiles"
 
 MEDIA_URL = "media/"
