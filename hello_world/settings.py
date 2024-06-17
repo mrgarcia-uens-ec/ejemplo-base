@@ -37,7 +37,7 @@ if 'CODESPACE_NAME' in os.environ:
 # Application definition
 
 INSTALLED_APPS = [
-    "appjesusgarcia",
+    "appjesusgarcia.apps.AppjesusgarciaConfig",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
