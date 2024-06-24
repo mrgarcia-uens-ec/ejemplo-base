@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from .models import Curso
+from .models import Asignatura
 
 def index(request):
     return HttpResponse("Hola")
@@ -16,6 +17,11 @@ def mostrarhtml(request):
     }
     return render(request, "cursos.html", contexto)
 
+def lista_de_asignaturas(request):
+    lista_asignaturas = Asignatura.objects.all()
+    contexto = {
+        "lista_asignaturas": lista_asignaturas,
+    }
+    return render(request, "asignaturas.html", contexto)
 
-# Esto es un cambio
 
