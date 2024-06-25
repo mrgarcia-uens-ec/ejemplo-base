@@ -11,6 +11,9 @@ class Estudiante(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.DO_NOTHING, null=True)
 
 class Asignatura(models.Model):
+    def __str__(self):
+        return self.nombre
+    
     nombre = models.CharField(max_length=200, null=True)
     descripcion = models.CharField(max_length=500, null=True)
     curso = models.ForeignKey(Curso, on_delete=models.DO_NOTHING, null=True)
