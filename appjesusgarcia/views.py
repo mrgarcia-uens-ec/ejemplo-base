@@ -3,6 +3,7 @@ from django.http import HttpResponse
 
 from .models import Curso
 from .models import Asignatura
+from .models import Estudiante
 
 def index(request):
     return HttpResponse("Hola")
@@ -26,4 +27,16 @@ def lista_de_asignaturas(request):
     }
     return render(request, "asignaturas.html", contexto)
 
+def lista_de_estudiantes(request):
+    lista_estudiantes = Estudiante.objects.all()
+    contexto = {
+        "lista_estudiantes": lista_estudiantes,
+    }
+    return render(request, "estudiantes.html", contexto)
 
+def detalle_estudiante(request, id_estudiante):
+    estudiante = Estudiante.objects.get(pk=id_estudiante)
+    contexto = {
+        "estudiante": estudiante,
+    }
+    return render(request, "estudiante.html", contexto)

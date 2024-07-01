@@ -1,0 +1,8 @@
+<h1>Lista de Alumnos</h1>
+<ul>
+    {% for estudiante in lista_estudiantes %}
+    <li>
+        <a href="/app1/estudiante/{{ estudiante.id }}/">{{ estudiante.nombre }} {{ estudiante.apellidos }}</a>
+    </li>
+    {% endfor %}
+</ul>

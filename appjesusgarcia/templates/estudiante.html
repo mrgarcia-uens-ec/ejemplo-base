@@ -1,0 +1,18 @@
+{% load static %}
+
+<h1>Ficha del Estudiante</h1>
+
+<div style="margin-left: 20px;">
+    <p><b>Nombre:</b> {{ estudiante.nombre }}</p>
+    <p><b>Apellidos:</b> {{ estudiante.apellidos }}</p>
+    <p><b>Fecha de Nacimiento:</b> {{ estudiante.fecha_nacimiento }}</p>
+    <p><b>Curso:</b> {{ estudiante.curso.nombre }}</p>
+
+    <img src="{% static 'images/fotos-estudiantes/' %}{{ estudiante.foto }}" width="200">
+    <hr>
+
+    <br>
+
+    <a href="/app1/estudiantes">Volver</a>
+</div>
+ 
