@@ -1,4 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
 <h1>Lista de Alumnos</h1>
+
+<form action="/app1/estudiantes" method="post">
+    {% csrf_token %}
+    
+    {{ form }}
+</form>
+
 <ul>
     {% for estudiante in lista_estudiantes %}
     <li>
@@ -6,3 +16,4 @@
     </li>
     {% endfor %}
 </ul>
+{% endblock %}

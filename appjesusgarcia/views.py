@@ -1,9 +1,13 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 
+from django.db.models import Q
+
 from .models import Curso
 from .models import Asignatura
 from .models import Estudiante
+
+from .forms import FormBusqueda
 
 def index(request):
     return HttpResponse("Hola")
@@ -29,8 +33,10 @@ def lista_de_asignaturas(request):
 
 def lista_de_estudiantes(request):
     lista_estudiantes = Estudiante.objects.all()
+    form = FormBusqueda()
     contexto = {
         "lista_estudiantes": lista_estudiantes,
+        "form": form
     }
     return render(request, "estudiantes.html", contexto)
 
