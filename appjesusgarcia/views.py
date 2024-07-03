@@ -8,6 +8,7 @@ from .models import Asignatura
 from .models import Estudiante
 
 from .forms import FormBusqueda
+from .forms import FormEstudiante
 
 def index(request):
     return HttpResponse("Hola")
@@ -32,8 +33,16 @@ def lista_de_asignaturas(request):
     return render(request, "asignaturas.html", contexto)
 
 def lista_de_estudiantes(request):
-    lista_estudiantes = Estudiante.objects.all()
-    form = FormBusqueda()
+    if request.method == 'POST':
+        form = FormBusqueda(request.POST)
+        if form.is_valid():
+            filtro = form.cleaned_data["filtro"]
+            filtroQ = Q(nombre__contains=filtro) | Q(apellidos__contains=filtro)
+    else:
+        form = FormBusqueda()
+        filtroQ = ~Q(pk__in=[])
+    
+    lista_estudiantes = Estudiante.objects.filter(filtroQ)
     contexto = {
         "lista_estudiantes": lista_estudiantes,
         "form": form
@@ -42,7 +51,10 @@ def lista_de_estudiantes(request):
 
 def detalle_estudiante(request, id_estudiante):
     estudiante = Estudiante.objects.get(pk=id_estudiante)
+    form = FormEstudiante()
+
     contexto = {
         "estudiante": estudiante,
+        "form": form
     }
     return render(request, "estudiante.html", contexto)
