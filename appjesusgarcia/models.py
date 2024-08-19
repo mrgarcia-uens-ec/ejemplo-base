@@ -9,7 +9,7 @@ class Curso(models.Model):
 
 class Estudiante(models.Model):
     def __str__(self):
-        return self.nombre
+        return self.nombre + ' ' + self.apellidos
     
     nombre = models.CharField(max_length=200, null=True)
     apellidos = models.CharField(max_length=200, null=True)
